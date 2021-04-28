@@ -5,17 +5,21 @@ import com.lisnenko.shape.Shape;
 import com.lisnenko.shape.Square;
 import com.lisnenko.shape.Triangle;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
+
 
 public class Main {
+    public static Random random = new Random(48);
     public static void main(String[] args) {
-        Circle circle = new Circle(23.4);
-        Square square = new Square(12.0);
-        Triangle triangle = new Triangle(2, 3, 4);
-        ArrayList<Shape> shapes = new ArrayList<>();
-        shapes.add(circle);
-        shapes.add(square);
-        shapes.add(triangle);
-        shapes.stream().forEach(shape -> System.out.println(shape.getPerimeter() + shape.getSquare()));
+        Shape[] shapes = new Shape[12];
+        for (int i = 0; i < shapes.length; i++){
+            if(i %2 == 0) shapes[i] = new Circle(random.nextDouble()*100);
+            if(i %2 == 1 && i < 6) shapes[i] = new Triangle(random.nextDouble()*100,
+                    random.nextDouble()*100,
+                    random.nextDouble()*100);
+            else shapes[i] = new Square(random.nextDouble()*100);
+        }
+        Arrays.stream(shapes).forEach(shape -> System.out.println(shape.toString()));
     }
 }

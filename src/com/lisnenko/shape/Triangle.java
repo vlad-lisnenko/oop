@@ -1,17 +1,16 @@
 package com.lisnenko.shape;
 
 
-public class Triangle extends Shape {
-    private double firstSide;
-    private double secondSide;
-    private double thirdSide;
-
+public class Triangle implements Shape {
+    private double firstSide, secondSide, thirdSide;
+    private double perimeter;
+    private double square;
     public Triangle(double firstSide, double secondSide, double thirdSide){
         this.firstSide=firstSide;
         this.secondSide=secondSide;
         this.thirdSide=thirdSide;
-        super.setPerimeter(firstSide+secondSide+thirdSide);
-        super.setSquare(Math.sqrt(getPerimeter() *
+        setPerimeter(firstSide+secondSide+thirdSide);
+        setSquare(Math.sqrt(getPerimeter() *
                 (getPerimeter()-firstSide) *
                 (getPerimeter()-secondSide) *
                 (getPerimeter() - thirdSide)));
@@ -24,17 +23,22 @@ public class Triangle extends Shape {
     public double getThirdSide() { return thirdSide; }
     public void setThirdSide(float thirdSide) { this.thirdSide = thirdSide; }
     @Override
-    public double getPerimeter() { return super.getPerimeter(); }
+    public double getPerimeter() { return perimeter; }
     @Override
-    public double getSquare() { return super.getSquare(); }
+    public double getSquare() { return square; }
+    @Override
+    public void setPerimeter(double perimeter) { this.perimeter = perimeter; }
+    @Override
+    public void setSquare(double square) { this.square = square; }
 
     @Override
     public String toString() {
         return "Triangle{" +
-                " firstSide=" + firstSide +
-                ", secondSide=" + secondSide +
-                ", thirdSide=" + thirdSide +
-                super.toString() +
+                " firstSide=" + getFirstSide() +
+                ", secondSide=" + getSecondSide() +
+                ", thirdSide=" + getThirdSide() +
+                ", perimeter= " + getPerimeter() +
+                ", square= " + getSquare() +
                 '}';
     }
 }

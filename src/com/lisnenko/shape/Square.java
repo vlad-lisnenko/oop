@@ -1,28 +1,33 @@
 package com.lisnenko.shape;
 
-public class Square extends Shape {
+public class Square implements Shape {
     private double side;
+    private double perimeter;
+    private double square;
 
     public Square(double side){
         this.side = side;
-        super.setSquare(side * side);
-        super.setPerimeter(side * 4);
+        setSquare(side * side);
+        setPerimeter(side * 4);
     }
 
     public double getSide() { return side; }
     public void setSide(double side) { this.side = side; }
 
     @Override
-    public double getPerimeter() { return super.getPerimeter(); }
-
+    public double getPerimeter() { return perimeter; }
     @Override
-    public double getSquare() { return super.getSquare(); }
-
+    public double getSquare() { return square; }
+    @Override
+    public void setPerimeter(double perimeter) { this.perimeter = perimeter; }
+    @Override
+    public void setSquare(double square) { this.square = square; }
     @Override
     public String toString() {
         return "Square{" +
-                " side=" + side +
-                super.toString() +
+                " side=" + getSide() +
+                ", perimeter= " + getPerimeter() +
+                ", square= " + getSquare() +
                 '}';
     }
 }
